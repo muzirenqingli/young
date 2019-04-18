@@ -1,8 +1,8 @@
 <template>
-<div>
+<div class="header-nav">
     <ul>
         <li v-for="item in list" :key="item.path">
-            <a :href="item.path">
+            <a :href="item.path" @click.prevent>
                 {{item.name}}
             </a>
         </li>
@@ -31,7 +31,25 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    
+    .header-nav{
+        position: fixed;
+        width: 100%;
+        overflow-x: auto;
+        font-size: 0.28rem;
+        padding: 0.1rem;
+        &::-webkit-scrollbar{display:none} 
+        ul{
+            width: 115%;
+            display: flex;
+            overflow-y: none
+        }  
+        
+        ul li{
+            margin: 0 0.18rem;
+            a{font-size: 0.28rem}
+        }
+        
+    }
 </style>
 
 

@@ -17,7 +17,7 @@ export default {
 }
 </script>
 <style lang="less" scope>
-    .topbar{ position: fixed; left: 0rem; top: 0rem; display: inline-block; background: #fff;}
+    .topbar{ position: fixed; left: 0rem; top: 0rem;background: #fff; height: 0.55rem; padding: 0.1rem;overflow: hidden;}
     .logo{ width:25%; margin: 0.10rem; float: left;}
     .serch-wrap{ display: inline-block; border-radius: 0.50rem; background: #f2f2f2; margin: 0.08rem 0rem; padding: 0.05rem 0.10rem; float: left;
         .serch-text{ border: none; background:none; outline: none}

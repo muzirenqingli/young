@@ -27,7 +27,7 @@ td {
 }
 
 html {
-    background: #004670;
+    background: #ffffff;
     position: relative;
     height: 100%;
     font-size: 100px;
@@ -134,4 +134,15 @@ table {
 
 .error {
     color: red;
+}
+
+div {
+    font-size: 0.24rem
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+    color: #444444
 }

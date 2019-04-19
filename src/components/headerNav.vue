@@ -32,11 +32,11 @@ export default {
 </script>
 <style lang="less" scoped>
     .header-nav{
-        position: fixed;
+        position: absolute;
         width: 100%;
         overflow-x: auto;
         font-size: 0.28rem;
-        padding: 0.1rem;
+        padding: 0.1rem 0rem;
         &::-webkit-scrollbar{display:none} 
         ul{
             width: 115%;

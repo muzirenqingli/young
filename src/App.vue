@@ -2,12 +2,14 @@
   <div id="app">
     <!-- 顶部 -->
     <header-comp></header-comp>
-    <header-nav></header-nav>
-
+    
+    <div class="main-content">
     <!-- 中间路由 -->
+    <transition name="component-fade">
     <router-view></router-view>
+    </transition>
     <!--路由匹配到的组件被渲染到这里w -->
-
+    </div>
     <!-- 页底 -->
     <mt-tabbar v-model="selected">
      
@@ -45,7 +47,7 @@
 
 
 import HeaderComp from './components/headerComp.vue'
-import HeaderNav from './components/headerNav.vue'
+
 export default {
   name: 'app',
   data:function(){
@@ -54,8 +56,7 @@ export default {
     }
   },
   components: {
-    HeaderComp,
-    HeaderNav
+    HeaderComp
   },
   created:function(){
     class Person{
@@ -76,18 +77,37 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  padding-top: 0.70rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0rem;
+  bottom: 0rem;
+  .main-content{
+    overflow-x: hidden;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0.7rem;
+    bottom: 0.7rem;
+  }
   
 }
 
 a.app-roter-active .mint-tab-item-label{
     color: #ec4741
   }
+
+  .component-fade-enter{transform:translateX(100%); opacity:0}
+  .component-fade-leave-to{transform:translateX(-100%); opacity:0; position: absolute}
+  .component-fade-enter-active{transition:all 0.8s ease;}
+  .component-fade-leave-active{transition:all 0.8s ease;}
+
+  .page-content{ position: absolute; overflow-x: hidden }
 </style>

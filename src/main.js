@@ -10,10 +10,25 @@ Vue.use(Router)
 Vue.use(Mint)
 import { Tabbar, TabItem } from 'mint-ui'
 
+
+import NewsComponent from './components/newsComp.vue'
+import VideoComponent from './components/videoComp.vue'
+import ShortVideoComponent from './components/shotVideoComp.vue'
+import PlayGameComponent from './components/playgameComp.vue'
+import MyComponent from './components/myComp.vue'
+
+
 //创建路由对象
 let router = new Router({
-    routes: [],
-    linkActiveClass: 'app-roter-active'
+    routes: [
+        { path: '/', redirect: '/home' },
+        { path: '/home', component: NewsComponent },
+        { path: '/video', component: VideoComponent },
+        { path: '/small-video', component: ShortVideoComponent },
+        { path: '/playGame', component: PlayGameComponent },
+        { path: '/my', component: MyComponent },
+    ],
+    linkActiveClass: 'is-selected'
 })
 
 Vue.component(Tabbar.name, Tabbar);

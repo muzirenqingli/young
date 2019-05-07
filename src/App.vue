@@ -5,9 +5,15 @@
     
     <div class="main-content">
     <!-- 中间路由 -->
-    <transition name="component-fade">
+    
+    
+      <div v-touch:swipe.left="swipeLeftHandler" v-touch:swipe.right="swipeRightHandler">
+        <transition name="component-fade">
     <router-view></router-view>
     </transition>
+    </div>
+    
+    
     <!--路由匹配到的组件被渲染到这里w -->
     </div>
     <!-- 页底 -->
@@ -45,8 +51,12 @@
 
 <script>
 
-
+import Vue from 'vue'
 import HeaderComp from './components/headerComp.vue'
+import Vue2TouchEvents from 'vue2-touch-events'
+
+Vue.use(Vue2TouchEvents)
+
 
 export default {
   name: 'app',
@@ -73,6 +83,15 @@ export default {
 
     let p1 = new Person('liqian','33');
     window.console.log(p1.say())
+  },
+  methods: {
+    swipeLeftHandler(){
+      console.log('left+++++++++++++');
+      this.$router.push({path:'video'})
+    },
+    swipeRightHandler(){
+      console.log('right______________')
+    }
   }
 }
 </script>

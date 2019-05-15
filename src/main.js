@@ -16,13 +16,19 @@ import VideoComponent from './components/videoComp.vue'
 import ShortVideoComponent from './components/shotVideoComp.vue'
 import PlayGameComponent from './components/playgameComp.vue'
 import MyComponent from './components/myComp.vue'
+import SubNews from './components/subNews.vue'
 
 
 //创建路由对象
 let router = new Router({
     routes: [
         { path: '/', redirect: '/home' },
-        { path: '/home', component: NewsComponent },
+        {
+            path: '/home',
+            component: NewsComponent,
+            query: { newsId: 100 },
+            children: [{ path: 'subNews', name: 'subNes', component: SubNews }]
+        },
         { path: '/video', component: VideoComponent },
         { path: '/small-video', component: ShortVideoComponent },
         { path: '/playGame', component: PlayGameComponent },

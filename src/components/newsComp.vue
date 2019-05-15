@@ -1,67 +1,56 @@
 <template>
     <div class="inner-content">
         <header-nav></header-nav>
-        <div class="news-content">
+        
+        <div v-touch:swipe.left="swipeLeftHandler" v-touch:swipe.right="swipeRightHandler">
+        <transition name="component-fade">
+    <router-view :key="newsId"></router-view>
+    </transition>
+    </div>
 
-        </div>
-        <!-- <router-view></router-view> -->
-
-        <div>
-            <h1>2015年美度慈善公益行，携手吴尊印经验总结 证永恒关爱 test</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-        <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
-         <div>
-            <h1>2015年美度慈善公益行，携手吴尊印证永恒关爱</h1>
-            <p>2017年9月26日，湖南省张家界九天洞苗圃小学的孩子们迎来了期待已久的大日子——焕然一新的学校正式落成。瑞士美度表携手......[查看详情]</p>
-        </div>
+        
     </div>
 </template>
 <script>
+import Vue from 'vue'
 import HeaderNav from './headerNav.vue'
+import Vue2TouchEvents from 'vue2-touch-events'
+
+Vue.use(Vue2TouchEvents)
+
 export default {
+    data () {
+        return {
+            newsId:0
+        }
+    },
     components:{
         HeaderNav
+    },
+    created() {
+        console.log(this.newsId+'12')
+         this.newsId = 1;
+    },
+    methods: {
+    swipeLeftHandler(){
+      console.log('left+++++++++++++');
+   if(this.newsId<6){
+        this.newsId ++;
+        this.goList();
     }
+    
+    },
+    swipeRightHandler(){
+      
+      if(this.newsId>0){
+          this.newsId --;
+           this.goList();
+      }
+    },
+    goList(){
+        this.$router.push({path:'subNews',query:{newsId: this.newsId}})
+    }
+  }
 }
 </script>
 <style lang='less' scoped>

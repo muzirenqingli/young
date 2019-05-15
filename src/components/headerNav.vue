@@ -1,13 +1,5 @@
 <template>
-<div class="header-nav">
-    <ul>
-        <li v-for="item in list" :key="item.path">
-            <a :href="item.path" @click.prevent>
-                {{item.name}}
-            </a>
-        </li>
-    </ul>
-</div> 
+ 
 </template>
 <script>
 export default {

@@ -23,25 +23,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    .header-nav{
-        position: absolute;
-        width: 100%;
-        overflow-x: auto;
-        font-size: 0.28rem;
-        padding: 0.1rem 0rem;
-        &::-webkit-scrollbar{display:none} 
-        ul{
-            width: 115%;
-            display: flex;
-            overflow-y: none
-        }  
-        
-        ul li{
-            margin: 0 0.18rem;
-            a{font-size: 0.28rem}
-        }
-        
-    }
+    
 </style>
 
 

@@ -17,6 +17,8 @@ import ShortVideoComponent from './components/shotVideoComp.vue'
 import PlayGameComponent from './components/playgameComp.vue'
 import MyComponent from './components/myComp.vue'
 import SubNews from './components/subNews.vue'
+import axios from 'axios'
+Vue.prototype.$http = axios
 
 
 //创建路由对象
@@ -25,9 +27,9 @@ let router = new Router({
         { path: '/', redirect: '/home' },
         {
             path: '/home',
+            redirect: '/home/subNews',
             component: NewsComponent,
-            query: { newsId: 100 },
-            children: [{ path: 'subNews', name: 'subNes', component: SubNews }]
+            children: [{ path: 'subNews', name: 'subNes', component: SubNews, query: { newsId: 'dfsdf' } }]
         },
         { path: '/video', component: VideoComponent },
         { path: '/small-video', component: ShortVideoComponent },

@@ -21,11 +21,7 @@
     </div>
 
     <div v-touch:swipe.left="swipeLeftHandler" v-touch:swipe.right="swipeRightHandler">
-      <transition
-        v-on:before-enter="beforeEnter"
-        v-on:enter="enter"
-        name="component-fade"
-      >
+      <transition :name="direction">
         <router-view :key="newsId"></router-view>
       </transition>
     </div>
@@ -41,8 +37,8 @@ Vue.use(Vue2TouchEvents);
 export default {
   data() {
     return {
-      newsId: 0,
-      direction: "left",
+      newsId: 1,
+      direction: "left-move",
       list: [
         { name: "关注", path: "subNews?newsId=1" },
         { name: "头条", path: "subNews?newsId=2" },
@@ -56,51 +52,34 @@ export default {
   },
   components: {},
   created() {
-    this.newsId = 0;
+    this.newsId = 1;
     this.$router.push({ path: "subNews", query: { newsId: this.newsId } });
   },
   methods: {
     swipeLeftHandler() {
       console.log("left+++++++++++++");
-      this.direction = "left";
+      this.direction = "left-move";
       if (this.newsId < 6) {
         this.newsId++;
         this.goList();
       }
     },
     swipeRightHandler() {
-      this.direction = "right";
-      if (this.newsId > 0) {
+      this.direction = "right-move";
+      if (this.newsId > 1) {
         this.newsId--;
         this.goList();
       }
     },
     goList() {
       this.$router.push({ path: "subNews", query: { newsId: this.newsId } });
-    },
-    beforeEnter: (el) => {
-       el.style.transform = "translateX(100%)";
-    },
-    enter(el, done) {
-         el.offsetWidth;
-      el.style.transform = "translateX(0)";
-      el.style.transition = "all 0.8s ease";
-      done();
-    },
-    // leave(el, done) {
-    //   if (this.direction == "left") {
-    //     el.style.transform = "translateX(-100%)";
-    //     el.style.transition = "all 0.8s ease";
-    //   } else {
-    //     el.style.transform = "translateX(100%)";
-    //     el.style.transition = "all 0.8s ease";
-    //   }
-    //   done();
-    // }
+    }
+   
   }
 };
 </script>
 <style lang='less' scoped>
+.router-link-exact-active{ color: red}
 .header-nav {
   position: fixed;
   width: 100%;
@@ -124,4 +103,13 @@ export default {
     }
   }
 }
+.left-move-enter{transform:translateX(100%); -webkit-transform: translateX(100%); opacity:0 ;position: absolute}
+.left-move-leave-to{transform:translateX(-100%);-webkit-transform: translateX(-100%); opacity:0; position: absolute}
+
+.right-move-leave{transform:translateX(0);-webkit-transform: translateX(0); opacity:0 ;position: absolute}
+.right-move-leave-to{transform:translateX(100%);-webkit-transform: translateX(100%); opacity:0 ;position: absolute}
+  
+  .right-move-enter{transform:translateX(-100%);-webkit-transform: translateX(-100%); opacity:0; position: absolute}
+  .left-move-enter-active,.right-move-enter-active{transition:all 0.8s linear; -webkit-transition:all 0.8s linear;}
+  .left-move-leave-active,.right-move-leave-active{transition:all 0.8s linear;-webkit-transition:all 0.8s linear;}
 </style>

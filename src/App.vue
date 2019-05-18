@@ -110,8 +110,8 @@ a.app-roter-active .mint-tab-item-label{
 
   .component-fade-enter{transform:translateX(100%); opacity:0}
   .component-fade-leave-to{transform:translateX(-100%); opacity:0; position: absolute}
-  .component-fade-enter-active{transition:all 0.8s ease;}
-  .component-fade-leave-active{transition:all 0.8s ease;}
+  .component-fade-enter-active{transition:all 0.8s linear;}
+  .component-fade-leave-active{transition:all 0.8s linear;}
 
   .page-content{ position: absolute; overflow-x: hidden }
 </style>

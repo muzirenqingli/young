@@ -19,6 +19,8 @@ import MyComponent from './components/myComp.vue'
 import SubNews from './components/subNews.vue'
 import axios from 'axios'
 Vue.prototype.$http = axios
+import Element from 'element-ui'
+import '../node_modules/element-ui/lib/theme-chalk/index.css'
 
 
 //创建路由对象
